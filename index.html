@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +12,17 @@
 
   <style>
     :root {
-      --black:    #0A0908;
-      --white:    #F4F2ED;
-      --stone:    #C4BDB0;
-      --charcoal: #2A2724;
-      --mid:      #E8E4DC;
-      --muted:    #8A857D;
-      --border:   #D4CEC5;
+      --black:    #020817;
+      --white:    #F8FAFC;
+      --stone:    #B9C7D9;
+      --charcoal: #EAF0F8;
+      --mid:      #071427;
+      --muted:    #A7B4C8;
+      --border:   rgba(248, 250, 252, 0.16);
+
+      --space-center: #163A63;
+      --space-mid:    #081B35;
+      --space-edge:   #020817;
     }
 
     *, *::before, *::after {
@@ -36,8 +39,9 @@
     body {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      background: var(--white);
-      color: var(--charcoal);
+      background:
+        radial-gradient(circle at center, var(--space-center) 0%, var(--space-mid) 42%, var(--space-edge) 100%);
+      color: var(--white);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
@@ -63,10 +67,10 @@
     }
 
     nav.scrolled {
-      background: rgba(244, 242, 237, 0.96);
+      background: rgba(2, 8, 23, 0.78);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom-color: var(--border);
+      border-bottom-color: rgba(248, 250, 252, 0.12);
     }
 
     .nav-logo {
@@ -80,7 +84,9 @@
       transition: color 0.4s ease;
     }
 
-    nav.scrolled .nav-logo { color: var(--charcoal); }
+    nav.scrolled .nav-logo {
+      color: var(--white);
+    }
 
     .nav-link {
       font-family: 'Jost', sans-serif;
@@ -96,11 +102,13 @@
     }
 
     nav.scrolled .nav-link {
-      color: var(--charcoal);
-      border-bottom-color: rgba(42, 39, 36, 0.25);
+      color: var(--white);
+      border-bottom-color: rgba(248, 250, 252, 0.35);
     }
 
-    .nav-link:hover { border-bottom-color: currentColor; }
+    .nav-link:hover {
+      border-bottom-color: currentColor;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -141,11 +149,11 @@
       display: block;
       font-family: 'Jost', sans-serif;
       font-weight: 200;
-      font-size: 0.62rem;
-      letter-spacing: 0.42em;
+      font-size: 0.78rem;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
       color: var(--stone);
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.35rem;
     }
 
     .hero-sm {
@@ -182,8 +190,8 @@
       display: block;
       font-family: 'Jost', sans-serif;
       font-weight: 200;
-      font-size: 0.62rem;
-      letter-spacing: 0.32em;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--stone);
       margin-bottom: 0.85rem;
@@ -205,6 +213,69 @@
       flex-wrap: wrap;
     }
 
+    /* ── SCROLL BUTTON ── */
+    .scroll-button {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.5rem;
+      opacity: 0.9;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .scroll-button:hover {
+      opacity: 1;
+      transform: translateY(3px);
+    }
+
+    .scroll-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.12rem;
+    }
+
+    .scroll-arrows span {
+      width: 9px;
+      height: 9px;
+      border-right: 1px solid rgba(244, 242, 237, 0.75);
+      border-bottom: 1px solid rgba(244, 242, 237, 0.75);
+      transform: rotate(45deg);
+      animation: scrollArrow 1.4s infinite;
+    }
+
+    .scroll-arrows span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .scroll-arrows span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes scrollArrow {
+      0% {
+        opacity: 0.15;
+        transform: rotate(45deg) translate(-2px, -2px);
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.15;
+        transform: rotate(45deg) translate(2px, 2px);
+      }
+    }
+
     /* ── Buttons ── */
     .btn {
       font-family: 'Jost', sans-serif;
@@ -218,7 +289,9 @@
       transition: opacity 0.3s ease;
     }
 
-    .btn:hover { opacity: 0.78; }
+    .btn:hover {
+      opacity: 0.78;
+    }
 
     .btn-light {
       color: var(--black);
@@ -303,7 +376,8 @@
 
     /* ── PARTNER SECTION ── */
     .partner {
-      background: var(--white);
+      background:
+        radial-gradient(circle at center, var(--space-center) 0%, var(--space-mid) 45%, var(--space-edge) 100%);
       padding: 8rem 2.5rem;
     }
 
@@ -323,7 +397,9 @@
       margin-bottom: 1.75rem;
     }
 
-    .eyebrow--light { color: var(--stone); }
+    .eyebrow--light {
+      color: var(--stone);
+    }
 
     .section-head {
       font-family: 'Fraunces', serif;
@@ -334,8 +410,13 @@
       letter-spacing: -0.022em;
     }
 
-    .section-head--dark { color: var(--black); }
-    .section-head--light { color: var(--white); }
+    .section-head--dark {
+      color: var(--white);
+    }
+
+    .section-head--light {
+      color: var(--white);
+    }
 
     .card-grid {
       max-width: 1200px;
@@ -343,13 +424,14 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      background: rgba(248, 250, 252, 0.14);
+      border: 1px solid rgba(248, 250, 252, 0.16);
     }
 
     .card {
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.035);
       padding: 3.5rem;
+      backdrop-filter: blur(10px);
     }
 
     .card-num {
@@ -370,7 +452,7 @@
       font-optical-sizing: auto;
       font-weight: 700;
       font-size: 1.35rem;
-      color: var(--black);
+      color: var(--white);
       letter-spacing: -0.02em;
       line-height: 1.2;
       margin-bottom: 1.25rem;
@@ -381,12 +463,13 @@
       font-weight: 300;
       font-size: 0.84rem;
       line-height: 1.82;
-      color: var(--muted);
+      color: rgba(248, 250, 252, 0.68);
     }
 
     /* ── ABOUT ── */
     .about {
-      background: var(--mid);
+      background:
+        radial-gradient(circle at center, #14345A 0%, #07172D 48%, #020817 100%);
       padding: 9rem 2.5rem;
     }
 
@@ -423,7 +506,7 @@
       font-weight: 300;
       font-style: italic;
       font-size: clamp(2rem, 3.5vw, 3.5rem);
-      color: var(--black);
+      color: var(--white);
       letter-spacing: -0.01em;
       line-height: 1.15;
       margin-bottom: 2rem;
@@ -434,10 +517,12 @@
       font-weight: 300;
       font-size: 0.87rem;
       line-height: 1.88;
-      color: var(--charcoal);
+      color: rgba(248, 250, 252, 0.76);
     }
 
-    .about-body p + p { margin-top: 1.4rem; }
+    .about-body p + p {
+      margin-top: 1.4rem;
+    }
 
     .about-sig {
       margin-top: 2.5rem;
@@ -448,7 +533,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(248, 250, 252, 0.52);
     }
 
     /* ── FINAL CTA ── */
@@ -528,7 +613,9 @@
       transition: color 0.3s ease;
     }
 
-    .footer-link:hover { color: var(--stone); }
+    .footer-link:hover {
+      color: var(--stone);
+    }
 
     .footer-copy {
       font-family: 'Jost', sans-serif;
@@ -551,23 +638,65 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade      { opacity: 1; transform: none; transition: none; }
-      html       { scroll-behavior: auto; }
+      .fade {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .scroll-arrows span {
+        animation: none;
+      }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .about-inner  { grid-template-columns: 1fr; gap: 3.5rem; }
-      .card-grid    { grid-template-columns: 1fr; }
-      .card         { padding: 2.5rem 2rem; }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 2.5rem 2rem;
+      }
     }
 
     @media (max-width: 640px) {
-      nav              { padding: 1.25rem 1.5rem; }
-      .partner         { padding: 6rem 1.5rem; }
-      .about           { padding: 6rem 1.5rem; }
-      .final-cta       { padding: 7rem 1.5rem; }
-      .location-caption { left: 2rem; bottom: 3rem; }
+      nav {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .hero-eyebrow,
+      .hero-sub,
+      .scroll-button {
+        font-size: 0.66rem;
+        letter-spacing: 0.2em;
+      }
+
+      .partner {
+        padding: 6rem 1.5rem;
+      }
+
+      .about {
+        padding: 6rem 1.5rem;
+      }
+
+      .final-cta {
+        padding: 7rem 1.5rem;
+      }
+
+      .location-caption {
+        left: 2rem;
+        bottom: 3rem;
+      }
     }
   </style>
 </head>
@@ -600,8 +729,14 @@
       <p class="hero-desc fade">A cinematic campaign across Lake Como and the Dolomites</p>
 
       <div class="hero-actions fade">
-        <a href="#contact" class="btn btn-light">Start the Conversation</a>
-        <a href="#como" class="btn btn-outline">View Work</a>
+        <a href="#como" class="scroll-button" aria-label="Scroll to the next section">
+          <span>Scroll Now</span>
+          <span class="scroll-arrows" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -626,7 +761,7 @@
     <div class="location-overlay" aria-hidden="true"></div>
     <div class="location-caption fade">
       <h2 class="location-name">The Dolomites</h2>
-      <p class="location-text">Stone that reaches toward the sky. Drive roads that were made to be remembered.</p>
+      <p class="location-text">Mountains that reach the sky. Drive roads that were made to be remembered.</p>
     </div>
   </section>
 
@@ -680,9 +815,9 @@
         <span class="eyebrow fade">The Director</span>
         <h2 class="about-heading fade">Hi, I'm Geri.</h2>
         <div class="about-body fade">
-          <p>Filmmaker and photographer creating cinematic travel stories through Legefilms.</p>
-          <p>Focused on luxury hospitality, automotive storytelling, and cinematic brand campaigns — always long-form, always location-specific, always with a point of view.</p>
-          <p>Summer in Northern Italy is an original campaign. Not a commission, but an invitation. I'm building something I believe in and looking for partners who do too.</p>
+          <p>Filmmaker and photographer creating cinematic travel stories through @legefilms.</p>
+          <p>Focused on luxury hospitality, storytelling, and cinematic campaigns.</p>
+          <p>Summer in Northern Italy is an original campaign. Not a commission, but an invitation. I'm looking for partners who believe in the vision behind the campaign.</p>
         </div>
         <p class="about-sig fade">Geri Baboci &nbsp;—&nbsp; Director, Legefilms</p>
       </div>
@@ -756,4 +891,3 @@
 
 </body>
 </html>
-```
